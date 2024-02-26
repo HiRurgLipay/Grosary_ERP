@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Business Sections</title>
+</head>
+<body>
+    <h1>Selected Business Sections</h1>
+    <ul>
+        {% for business in selected_businesses %}
+            <li>{{ business.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

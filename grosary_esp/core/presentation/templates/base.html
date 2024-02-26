@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Django App{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/side_menu.css' %}">
+    {% block styles %}
+        {% if 'admin' in request.path %}
+            <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}">
+        {% elif 'question' in request.path %}
+            <link rel="stylesheet" type="text/css" href="{% static 'css/survey.css' %}">
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <!-- Переместили кнопку слева вверх -->
+        <button id="menu-toggle">☰</button>
+        <h1>{% block page_title %}{% endblock %}</h1>
+    </header>
+    <nav id="side-menu">
+        <ul>
+            <li><a href="{% url 'admin:login' %}">Администратор</a></li>
+            {% if user.is_staff %}
+                <li><a href="{% url 'admin_panel' %}">Панель администратора</a></li>
+            {% endif %}
+            <li><a href="{% url 'register' %}">Регистрация</a></li>
+            <li><a href="{% url 'login' %}">Вход</a></li>
+            <li><a href="{% url 'start_survey' %}">Опрос</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Выход</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="{% static 'js/side_menu.js' %}"></script>
+    <script>
+        // Определение функции toggleSideMenu
+        function toggleSideMenu() {
+            var sideMenu = document.getElementById('side-menu');
+            sideMenu.classList.toggle('open');
+        }
+
+        // Добавление обработчика события для кнопки меню
+        document.getElementById('menu-toggle').addEventListener('click', toggleSideMenu);
+    </script>
+</body>
+</html>

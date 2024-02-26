@@ -1,0 +1,63 @@
+/* Стили для бокового меню */
+#side-menu {
+    position: fixed;
+    top: -100%; /* Спрятать меню за верхнюю границу экрана */
+    left: 50%; /* Позиционируем меню по центру по горизонтали */
+    transform: translateX(-50%); /* Центрируем меню */
+    width: 90%; /* Уменьшаем ширину меню */
+    max-width: 900px; /* Ограничиваем максимальную ширину */
+    height: auto; /* Высота меню автоматическая */
+    background-color: white; /* Белый фон */
+    padding-top: 20px;
+    z-index: 999; /* чтобы меню было поверх остального контента */
+    border: 1px solid black; /* Черная рамка */
+    border-radius: 10px; /* Круглые края */
+    overflow-y: auto; /* Добавляем прокрутку, если меню слишком высокое */
+    transition: top 0.3s ease; /* Добавляем анимацию при изменении свойства top */
+}
+
+/* Показывать меню при активном классе .open */
+#side-menu.open {
+    top: 0; /* Появление меню сверху */
+}
+
+/* Стили для ссылок в меню */
+#side-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Отображаем ссылки в одну линию */
+    flex-direction: row; /* Отображаем ссылки по горизонтали */
+    justify-content: center; /* Центрируем ссылки по горизонтали */
+}
+
+#side-menu ul li {
+    margin: 10px; /* Отступы между ссылками */
+}
+
+#side-menu ul li a {
+    text-decoration: none;
+    color: black; /* Черный цвет текста */
+    font-family: Arial, sans-serif; /* Шрифт Arial или аналогичный */
+    font-size: 14px; /* Размер шрифта */
+    padding: 5px 10px; /* Отступы вокруг текста ссылки */
+    border-radius: 5px; /* Круглые края */
+    transition: background-color 0.3s ease; /* Плавное изменение цвета фона при наведении */
+}
+
+#side-menu ul li a:hover {
+    background-color: #f0f0f0; /* Светло-серый фон при наведении */
+}
+
+/* Стили для закрепления кнопки меню */
+#menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999; /* Помещаем кнопку поверх других элементов */
+    color: black; /* Черный цвет текста кнопки */
+    font-size: 20px; /* Размер шрифта кнопки */
+    background-color: transparent; /* Прозрачный фон */
+    padding: 5px; /* Отступы вокруг кнопки */
+    cursor: pointer; /* Изменяем указатель при наведении */
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Onboarding</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ритейл</h1>
+            <h2>Опрос завершен</h2>
+                <p>Спасибо за участие в опросе!</p>
+
+                {% if question_answers %}
+                <h2>Ваши ответы:</h2>
+                <ul>
+                    {% for question, answer in question_answers %}
+                        <li><strong>{{ question }}</strong>: {{ answer }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Вы не дали ни одного ответа в опросе.</p>
+                {% endif %}
+
+                {% if business_type %}
+                <h2>Ваш тип бизнеса:</h2>
+                <p>{{ business_type }}</p>
+                {% endif %}
+    </div>
+</body>
+</html>

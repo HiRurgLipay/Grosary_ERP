@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Панель администратора{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="left-column">
+            <h2>Добавить вопрос</h2>
+            <form id="question-form" method="post" action="{% url 'admin_panel' %}">
+                {% csrf_token %}
+                <label for="question_text">Текст вопроса:</label><br>
+                <input type="text" id="question_text" name="question_text"><br>
+                <input type="submit" value="Добавить вопрос">
+            </form>
+        </div>
+
+        <div class="right-column">
+            <h2>Добавить ответ</h2>
+            <form id="answer-form" method="post" action="{% url 'add_answer' %}">
+                {% csrf_token %}
+                <label for="question_select">Выберите вопрос:</label><br>
+                <select id="question_select" name="question_id">
+                    {% for question in questions %}
+                        <option value="{{ question.id }}">{{ question.text }}</option>
+                    {% endfor %}
+                </select><br>
+                <div id="answer_inputs">
+                    <input type="text" name="answer_text" placeholder="Введите ответ"><br>
+                </div>
+                <label for="next_question_select">Выберите следующий вопрос (если есть):</label><br>
+                <select id="next_question_select" name="next_question_id">
+                    <option value="">Нет следующего вопроса</option> 
+                    {% for question in questions %}
+                        <option value="{{ question.id }}">{{ question.text }}</option>
+                    {% endfor %}
+                </select><br>
+                <input type="submit" value="Добавить ответ">
+            </form>
+        </div>
+    </div>  
+{% endblock %}
