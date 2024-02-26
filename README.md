@@ -53,5 +53,3 @@ DATABASE_PORT='5432`
 **5. Запуск сервера:**
 
 ``python manage.py runserver``
-
-**6. Комментарии автора:**
